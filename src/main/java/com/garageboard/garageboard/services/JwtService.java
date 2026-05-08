@@ -30,8 +30,23 @@ public class JwtService {
                 .expiration(new Date(System.currentTimeMillis() + 86400000)).compact(); // 24 hours
     }
 
-    public boolean validateToken(String token, String id) {
-        return Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token).getPayload().getSubject().equals(id);
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token);
+            return true;
+        } catch(Exception e) {
+            return false;
+        }
+    }
+
+    
+    public long extractUserId(String token) {
+        try {
+            String id = Jwts.parser().verifyWith(getSigningKey()).build().parseSignedClaims(token).getPayload().getSubject();
+            return Long.parseLong(id);
+        } catch (Exception e) {
+            return -1L;
+        }
     }
 
 }
