@@ -1,4 +1,4 @@
-package com.garageboard.garageboard.services;
+package com.garageboard.garageboard.Jwt;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Date;

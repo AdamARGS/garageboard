@@ -1,6 +1,4 @@
-package com.garageboard.garageboard.dto;
-
-import com.garageboard.garageboard.entities.Car;
+package com.garageboard.garageboard.Car;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

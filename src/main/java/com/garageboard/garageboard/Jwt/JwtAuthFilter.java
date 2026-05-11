@@ -1,4 +1,4 @@
-package com.garageboard.garageboard.filters;
+package com.garageboard.garageboard.Jwt;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -12,9 +12,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.security.core.Authentication;
 
-import com.garageboard.garageboard.entities.User;
-import com.garageboard.garageboard.repositories.UserRepository;
-import com.garageboard.garageboard.services.JwtService;
+import com.garageboard.garageboard.User.User;
+import com.garageboard.garageboard.User.UserRepository;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,6 +1,4 @@
-package com.garageboard.garageboard.controllers;
-
-import com.garageboard.garageboard.services.UserService;
+package com.garageboard.garageboard.User;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
-
-import com.garageboard.garageboard.dto.UserResponseDTO;
-import com.garageboard.garageboard.entities.User;
 
 @RestController
 @RequestMapping("/api/users")

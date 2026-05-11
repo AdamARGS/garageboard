@@ -1,8 +1,8 @@
-package com.garageboard.garageboard.services;
+package com.garageboard.garageboard.User;
 
-import com.garageboard.garageboard.entities.User;
-import com.garageboard.garageboard.repositories.UserRepository;
 import org.springframework.stereotype.Service;
+
+import com.garageboard.garageboard.Jwt.JwtService;
 
 import java.util.Optional;
 

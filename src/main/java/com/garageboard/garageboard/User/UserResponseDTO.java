@@ -1,10 +1,7 @@
-package com.garageboard.garageboard.dto;
+package com.garageboard.garageboard.User;
 
 import lombok.Getter;
 import lombok.Setter;
-
-import com.garageboard.garageboard.entities.User;
-
 import lombok.AllArgsConstructor;
 
 @Getter

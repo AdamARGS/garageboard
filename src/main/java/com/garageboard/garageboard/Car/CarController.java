@@ -1,4 +1,4 @@
-package com.garageboard.garageboard.controllers;
+package com.garageboard.garageboard.Car;
 
 import java.util.Map;
 
@@ -16,11 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.garageboard.garageboard.dto.CarResponseDTO;
-import com.garageboard.garageboard.entities.Car;
-import com.garageboard.garageboard.entities.User;
-import com.garageboard.garageboard.repositories.CarRepository;
-import com.garageboard.garageboard.services.CarService;
+import com.garageboard.garageboard.User.User;
 
 @RestController
 @RequestMapping("/api/users/cars")

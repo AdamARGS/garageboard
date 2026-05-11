@@ -1,4 +1,4 @@
-package com.garageboard.garageboard.entities;
+package com.garageboard.garageboard.User;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -6,6 +6,8 @@ import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.garageboard.garageboard.Car.Car;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,14 +1,11 @@
-package com.garageboard.garageboard.services;
+package com.garageboard.garageboard.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import com.garageboard.garageboard.dto.CarResponseDTO;
-import com.garageboard.garageboard.entities.Car;
-import com.garageboard.garageboard.entities.User;
-import com.garageboard.garageboard.repositories.CarRepository;
+import com.garageboard.garageboard.User.User;
 
 @Service
 public class CarService {

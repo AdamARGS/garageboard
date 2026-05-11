@@ -1,4 +1,6 @@
-package com.garageboard.garageboard.entities;
+package com.garageboard.garageboard.Car;
+
+import com.garageboard.garageboard.User.User;
 
 import jakarta.persistence.*;
 import lombok.Getter;

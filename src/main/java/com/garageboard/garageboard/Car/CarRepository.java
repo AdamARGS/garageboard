@@ -1,7 +1,6 @@
-package com.garageboard.garageboard.repositories;
+package com.garageboard.garageboard.Car;
 
-import com.garageboard.garageboard.entities.Car;
-import com.garageboard.garageboard.entities.User;
+import com.garageboard.garageboard.User.User;
 
 import java.util.List;
 
