@@ -1,6 +1,7 @@
 package com.garageboard.garageboard.Car;
 
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -43,5 +44,20 @@ public class CarService {
 
     public void deleteCar(Car car) {
         carRepository.delete(car);
+    }
+
+    public CarResponseDTO updateCar(Car car, Map<String, String> body) {
+        if (body.get("year") != null)
+            car.setYear(Integer.parseInt(body.get("year")));
+        if (body.get("make") != null)
+            car.setMake(body.get("make"));
+        if (body.get("model") != null)
+            car.setModel(body.get("model"));
+        if (body.get("trim") != null)
+            car.setTrim(body.get("trim"));
+        if (body.get("description") != null)
+            car.setDescription(body.get("description"));
+
+        return new CarResponseDTO(carRepository.save(car));
     }
 }

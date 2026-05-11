@@ -73,6 +73,22 @@ public class CarController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateCar(@PathVariable long id, @RequestBody Map<String, String> body) {
+        try {
+            Car car = carService.findById(id);
+            User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            if (user.getId().equals(car.getUser().getId())) {
+                carService.updateCar(car, body);
+            } else {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You cannot update another user's car!");
+            }
+            return ResponseEntity.ok("Car with ID " + id + " updated succesfully.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     /*
      * // Putting this off for now
      * 
