@@ -2,6 +2,7 @@ package com.garageboard.garageboard.entities;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,6 +31,9 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<Car> cars;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
