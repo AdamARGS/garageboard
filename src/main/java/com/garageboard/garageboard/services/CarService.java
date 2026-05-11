@@ -1,14 +1,18 @@
 package com.garageboard.garageboard.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
+import com.garageboard.garageboard.dto.CarResponseDTO;
 import com.garageboard.garageboard.entities.Car;
 import com.garageboard.garageboard.entities.User;
 import com.garageboard.garageboard.repositories.CarRepository;
 
 @Service
 public class CarService {
-    
+
     private CarRepository carRepository;
 
     public CarService(CarRepository carRepository) {
@@ -26,5 +30,12 @@ public class CarService {
         car.setDescription(description); // may be null
 
         return carRepository.save(car);
+    }
+
+    public List<CarResponseDTO> getCars(User user) {
+        List<Car> cars = carRepository.findByUser(user);
+        return cars.stream()
+                .map(CarResponseDTO::new)
+                .collect(Collectors.toList());
     }
 }
