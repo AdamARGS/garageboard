@@ -38,4 +38,13 @@ public class CarService {
                 .map(CarResponseDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public Car findById(long id) {
+        return carRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Car not found."));
+    }
+
+    public void deleteCar(Car car) {
+        carRepository.delete(car);
+    }
 }
