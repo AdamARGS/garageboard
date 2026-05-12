@@ -60,4 +60,8 @@ public class CarService {
 
         return new CarResponseDTO(carRepository.save(car));
     }
+    
+    public boolean userOwnsCar(User user, Car car) {
+        return user.getId().equals(car.getUser().getId());
+    }
 }

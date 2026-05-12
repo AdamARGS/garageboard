@@ -1,5 +1,8 @@
 package com.garageboard.garageboard.Car;
 
+import java.util.List;
+
+import com.garageboard.garageboard.BuildLog.BuildLog;
 import com.garageboard.garageboard.User.User;
 
 import jakarta.persistence.*;
@@ -36,4 +39,7 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "owner", nullable = false)
     private User user;
+
+    @OneToMany(mappedBy = "car", fetch = FetchType.LAZY)
+    private List<BuildLog> buildLogs;
 }

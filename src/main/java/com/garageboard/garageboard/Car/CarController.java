@@ -2,9 +2,7 @@ package com.garageboard.garageboard.Car;
 
 import java.util.Map;
 
-import org.springframework.boot.autoconfigure.graphql.GraphQlProperties.Http;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,11 +21,9 @@ import com.garageboard.garageboard.User.User;
 public class CarController {
 
     CarService carService;
-    CarRepository carRepository;
 
-    public CarController(CarService carService, CarRepository carRepository) {
+    public CarController(CarService carService) {
         this.carService = carService;
-        this.carRepository = carRepository;
     }
 
     @PostMapping("/add")
@@ -62,7 +58,7 @@ public class CarController {
         try {
             Car car = carService.findById(id);
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (user.getId().equals(car.getUser().getId())) {
+            if (carService.userOwnsCar(user, car)) {
                 carService.deleteCar(car);
             } else {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You cannot delete another user's car!");
@@ -78,7 +74,7 @@ public class CarController {
         try {
             Car car = carService.findById(id);
             User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            if (user.getId().equals(car.getUser().getId())) {
+            if (carService.userOwnsCar(user, car)) {
                 carService.updateCar(car, body);
             } else {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("You cannot update another user's car!");
@@ -88,13 +84,4 @@ public class CarController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-    /*
-     * // Putting this off for now
-     * 
-     * @PutMapping("/{id}")
-     * public ResponseEntity<?> updateCar(@PathVariable long id, @RequestBody User
-     * user, @RequestBody int year, @RequestBody String make, @RequestBody String
-     * model, @RequestBody String trim, @RequestBody String description) {}
-     */
 }
